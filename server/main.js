@@ -4,7 +4,7 @@ var fs = require('fs');
 var app = express();
 
 app.get('/', function(req, res){
-    var html = fs.readFile('./static/login.html', function(err, html){
+    var html = fs.readFile('./public/login.html', function(err, html){
         html = "" + html;
         if(err) throw err;
         res.writeHeader(200, {"Content-Type":"text/html"});
