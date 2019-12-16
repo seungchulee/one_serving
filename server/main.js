@@ -6,17 +6,25 @@ var app = express();
 app.use(express.static('public'));
 
 app.get('/', function(req, res){
-    /*
-    var html = fs.readFile('./public/login.html', function(err, html){
-        html = "" + html;
-        if(err) throw err;
-        //res.writeHeader(200, {"Content-Type":"text/html"});
-        //res.write(html);
-        res.end();
-    });
-    */
-    res.sendFile(__dirname + '/public/index.html');
+
+    res.sendFile(__dirname + '/public/login.html');
 });
+
+app.get('/search', function(req, res){
+    res.sendFile(__dirname + '/public/search.html');
+});
+
+app.post('/search', function(req, res){
+    res.sendFile(__dirname + '/public/search.html');
+});
+
+
+
+
+app.get('/register', function(req, res){
+    res.sendFile(__dirname + '/public/register.html');
+});
+
 
 app.listen(3000, function(){
     console.log('Example start');
