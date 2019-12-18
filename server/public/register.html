@@ -10,12 +10,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
 </head>
 <body>
     <div id="login-page" class="row">
     <div class="col s12 z-depth-4 card-panel">
-      <form class="login-form" action='search' method='post'>
+      <form class="login-form" action='register' method='post'>
         <div class="row">
           <div class="input-field col s12 center">
             <h4>회원가입</h4>
@@ -27,8 +26,8 @@
           <div class="input-field col s12">
             <!-- <i class="mdi-social-person-outline prefix"></i> -->
             <i class="material-icons prefix">account_circle</i>
-            <input id="username" name="username" type="text"/>
-            <label for="username">Username</label>
+            <input id="name" name="name" type="text"/>
+            <label for="name">Username</label>
           </div>
         </div>
 
@@ -77,6 +76,18 @@
             <label for="job">Customer / Owner / DeliveryMan</label>
           </div>
         </div>
+
+        <div class="row margin">
+          <div class="input-field col s12">
+            <!-- <i class="mdi-action-lock-outline prefix"></i> -->
+            <i class="material-icons prefix">sms</i>
+            
+            <input id="token" name="token" type="text"/>
+            <label for="token">Token</label>
+          </div>
+        </div>
+
+
 
         <div class="row">
           <div class="input-field col s12">
