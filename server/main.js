@@ -14,6 +14,8 @@ var connection = mysql.createConnection({
     database : 'capstonedb'
 });
 
+connection.connect();
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
@@ -23,6 +25,32 @@ app.get('/', function(req, res){
     res.sendFile(__dirname + '/public/login.html');
 });
 
+app.post('/', function(req, res){
+    var email = req.body.email;
+    var password = req.body.password;
+
+    var sql = "select * from member where email=?";
+    connection.query(sql, [email], function(err, results){
+        if(err){
+            console.log(err);
+        }
+        else{
+            if(results.length > 0){
+                if(results[0].password == password){
+                    res.sendFile(__dirname + '/public/search.html');
+                }
+                else{
+                    res.sendFile(__dirname + '/public/LoginFail.html');
+                }
+            }
+            else{
+                res.sendFile(__dirname + '/public/LoginFail.html');
+            }
+
+        }
+    });
+});
+        
 app.get('/search', function(req, res){
     res.sendFile(__dirname + '/public/search.html');
 });
@@ -41,7 +69,6 @@ app.post('/register', function(req, res){
     var token = req.body.token;
 
 
-    connection.connect();
     var sql = "insert into member (name, email, password, phoneNumber, job, address, token) values(?,?,?,?,?,?,?)";
     var params = [name, email, password, phoneNumber, job, address, token];
 
@@ -49,7 +76,6 @@ app.post('/register', function(req, res){
         if(err) console.log(err);
         else console.log(rows.insertId);
     });
-    connection.end();
     res.sendFile(__dirname + '/public/RegisterSuccess.html');
 });
 
