@@ -1,0 +1,37 @@
+﻿<html>
+
+<head>
+    <title>1인분 배달이요</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="stylesheets/price.css">
+</head>
+<body>
+
+    <h2><%storeName%></h2>
+       
+    <%loop%>
+
+    <div class="total-cost">
+        <h2>총 금액</h2>
+        <div>
+            <span></span>
+            <span id="total-cost-inner">0</span>
+            <input id="output" type="text" value="0" disabled />
+            <span>원</span>
+            <br>
+            <input type="submit" value="제출">
+        </div>
+    </div>
+    <a href="#">
+        <input class="checkbox-btn" name="checkbox-collection">
+        <label class="checkbox-label" for="checkbox-10" tabindex="10">
+            <span> 주문하기 </span>
+        </label>
+    </a>
+    <!--<form method="post" action="index.html">-->
+    <!--<input id="total-cost-inner" type="submit">-->
+    <!--</form>-->
+    <script src="javascripts/price.js"></script>
+</body>
+
+</html>
