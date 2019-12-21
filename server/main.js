@@ -37,14 +37,17 @@ app.post('/', function(req, res){
         else{
             if(results.length > 0){
                 if(results[0].password == password){
-                    res.sendFile(__dirname + '/public/search.html');
+                    res.redirect('/search.html');
+                    //res.sendFile(__dirname + '/public/search.html');
                 }
                 else{
-                    res.sendFile(__dirname + '/public/LoginFail.html');
+                    res.redirect('/LoginFail.html');
+                    //res.sendFile(__dirname + '/public/LoginFail.html');
                 }
             }
             else{
-                res.sendFile(__dirname + '/public/LoginFail.html');
+                res.redirect('/LoginFail.html');
+                //res.sendFile(__dirname + '/public/LoginFail.html');
             }
 
         }
@@ -53,6 +56,25 @@ app.post('/', function(req, res){
         
 app.get('/search', function(req, res){
     res.sendFile(__dirname + '/public/search.html');
+});
+
+app.post('/search', function(req, res){
+    var type = req.body.type;
+    var label = req.body.label;
+    
+    var sql = "select * from store where `type`=?and `label` like '%" + label + "%'";
+    var params = [type];
+
+    connection.query(sql, params, function(err, results){
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(results.length + "");
+        }
+    });
+    res.redirect('/' + type + '.html');
+    //res.sendFile(__dirname + '/public/' + type + '.html');
 });
 
 app.get('/register', function(req, res){
@@ -76,9 +98,13 @@ app.post('/register', function(req, res){
         if(err) console.log(err);
         else console.log(rows.insertId);
     });
-    res.sendFile(__dirname + '/public/RegisterSuccess.html');
+    res.redirect('/RegisterSuccess.html');
+    //res.sendFile(__dirname + '/public/RegisterSuccess.html');
 });
 
+app.get('/han.html', function(req, res){
+    res.sendFile(__dirname + '/public/han.html');
+});
 
 app.listen(3000, function(){
     console.log('Example start');
