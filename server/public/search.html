@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>지역 검색</title>
     <link rel="stylesheet" href="stylesheets/searchStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -20,36 +21,35 @@
     </script>
 </head>
 <body>
-    <form action="/search" method="POST">
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-
-        <div id="select_box">
-    <label for="color">한식</label>
-    <select id="color" name="type" title="select color">
-        <option selected="selected" value="han">한식</option>
-            <option value="joong">중식</option>
-            <option value="ill">일식</option>
-            <option value="yang">양식</option>
-            <option value="bun">분식</option>
-            <option value="ya">야식</option>
-            <option value="chi">치킨</option>
-            <option value="fast">패스트푸드</option>
-    </select>
-</div>
-
-
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group" >
-              <input type="text" id= "input" name= "label" class="form-control bg-light border-0 small" size="50" placeholder="건물명, 도로명, 지번으로 검색하세요." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                   <input class="btn btn-primary" type="submit" value="검색">
-                  <i class="fas fa-search fa-sm"></i>
-              </div>
+    <form action="/search" method="POST"> 
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <div id="select_box">
+                <label for="color">한식</label>
+                <select class="custom-select mb-3" id="color" name="type" title="select color">
+                    <option selected="selected" value="han">한식</option>
+                    <option value="joong">중식</option>
+                    <option value="ill">일식</option>
+                    <option value="yang">양식</option>
+                    <option value="bun">분식</option>
+                    <option value="ya">야식</option>
+                    <option value="chi">치킨</option>
+                    <option value="fast">패스트푸드</option>
+                </select>
             </div>
-          </form>
-    </nav>
+
+
+            <!-- Topbar Search -->
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <div class="input-group" >
+                    <input type="text" id= "input" name= "label" class="form-control bg-light border-0 small" size="50" placeholder="건물명, 도로명, 지번으로 검색하세요." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <input class="btn btn-primary" type="submit" value="검색">
+                        <i class="fas fa-search fa-sm"></i>
+                    </div>
+                </div>
+            </form>
+        </nav>
     </form>
     <script src="javascripts/search.js"></script>
 </body>

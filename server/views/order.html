@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>1인분 배달이요!</title>
+    <link rel="stylesheet" type="text/css" href="css/order.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <!--<div id="login-page" class="row">-->
+        <div class="col s12 z-depth-4 card-panel">
+          <form class="login-form">
+            <div class="row">
+              <div class="input-field col s12 center">
+                <!-- <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login"/> -->
+                <p class="center login-form-text" style="font-size:25pt"><b>주 문 정 보</b></p>
+              </div>
+            </div>
+            <center>
+            <div style="width:75%;">
+            <table class="centered">
+              <thead>
+                <tr>
+                    <th>가게 이름</th>
+                    <th>메뉴 이름</th>
+                    <th>가 격</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                    <td rowspan="<%=data.length%>"><%=storeName%></td>
+                    <td><%=data[0].menu%></td>
+                    <td><%=data[0].price%></td>
+                </tr>
+                <% for(var i = 1; i < data.length; i++){ %>
+                <tr>
+                    <td><%=data[i].menu%></td>
+                    <td><%=data[i].price%></td>                
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+            </div>
+            </center>
+            <br><br>
+              <div class="card-panel grey lighten-5 z-depth-1">
+                  <div class="col s12">
+                    <span class="black-text" style="font-size:15pt;">
+                        주문시간 : <%=time%><br>
+                        배 송 지   : <%=customerAddress%><br>
+                        주문금액 : <%=price%>원
+                    </span>
+                  </div>
+              </div>
+          </form>
+          <div align="center">
+            <form action="cancel" method="POST">
+                <input type="hidden" name="storeNo" value="<%=storeNo%>">
+                <input type="hidden" name="customerNo" value="<%=customerNo%>">
+                <input type="hidden" name="time" value="<%=time%>">
+                <input type="submit" class="waves-effect waves-light btn red" value="주 문 취 소 하 기"/>
+                <!--<div align="right">-->&emsp;&emsp;&emsp;&emsp;
+                <a href="/search" class="waves-effect waves-light btn blue"><i class="material-icons left">done_all</i>메 인 화 면 가 기</a>
+            </form>
+          </div>
+          <!--</div>-->
+        </div>
+      <!--</div>-->
+      
+      <script src="javascripts/login.js"></script>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>1인분 배달이요!</title>
+  <link rel="stylesheet" type="text/css" href="css/ownerPage.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+  <!--<div id="login-page" class="row">-->
+    <div class="card-panel teal grey lighten-5 z-depth-1" style="margin-top:100px;">
+      <div class="row valign-wrapper">
+        <div class="col s2">
+            <img src="pictures/<%=storeNo%>.jpg" alt="" class="circle responsive-img z-depth-3"> <!-- notice the "circle" class -->
+        </div>
+        <div class="col s9">
+          <span class="black-text" style="font-size:20px">
+            <blockquote>
+                가게 이름 : <%=storeName%> <br><br>
+                가게 주소 : <%=storeAddress%> <br><br>
+                가게 번호 : <%=phoneNumber%> <br><br>
+                최소 주문 금액 : <%=minCost%>원
+            </blockquote>
+          </span>
+        </div>
+      </div>
+    </div>
+  <div class="col s12 m8 offset-m2 l6 offset-l3">
+    <div class="card-panel grey lighten-5 z-depth-1">
+  <center>
+    <div style="width:75%;">
+      <table class="striped centered">
+        <thead>
+          <tr>
+            <th>주문 번호</th>
+            <th>고객 번호</th>
+            <th>고객 주소</th>
+            <th>메 뉴</th>
+            <th>가격</th>
+            <th>주문 시간</th>
+            <th>상태</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for (var i=0;i<info.length;i++){ %>
+            <tr>
+                <td><%=info[i].orderNo%></td>
+                <td><%=info[i].customerNo%></td>
+                <td><%=info[i].customerAddress%></td>
+                <td><%=info[i].menu%></td>
+                <td><%=info[i].price%></td>
+                <td><%=info[i].time%></td>
+                <td>
+                    <% if(info[i].stmt == '0'){ %>
+                    대기
+                    <%} else if(info[i].stmt == '1'){ %>
+                    <a href="read?orderNo=<%=info[i].orderNo%>">조리 중</a>
+                    <% } else { %>
+                    배달
+                    <% } %>
+                
+                </td>
+            </tr>
+            <%} %>
+
+        </tbody>
+      </table>
+    </div>
+  </center>
+  </div>
+</div>
+
+  </form>
+
+  <!--</div>-->
+  </div>
+  <!--</div>-->
+
+  <script src="javascripts/login.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+</body>
+
+</html>
